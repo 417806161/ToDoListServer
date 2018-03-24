@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from . import localconfig
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,8 +27,7 @@ SECRET_KEY = 'u!tz+!4*vldes(siyp4hhf&sq3jsw5u(#mpvj^f6t%(0gr*7tc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -74,9 +75,19 @@ WSGI_APPLICATION = 'ToDoListServer.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': localconfig.DB['HOST'],
+        'PORT': localconfig.DB['PORT'],
+        'NAME': localconfig.DB['NAME'],
+        'USER': localconfig.DB['USER'],
+        'PASSWORD': localconfig.DB['PASSWORD'],
+
     }
 }
 
