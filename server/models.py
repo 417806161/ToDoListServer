@@ -1,3 +1,4 @@
+from django.core.validators import EmailValidator
 from django.db import models
 
 # Create your models here.
@@ -5,33 +6,33 @@ from django.db import models
 
 class User(models.Model):
     id = models.BigIntegerField
-    user_nickname = models.CharField(max_length=225)
-    user_email = models.EmailField
-    user_pwd = models.CharField(max_length=225)
-    wechat_openid = models.CharField(max_length=225)
-    wechat_union = models.CharField(max_length=225)
-    user_headimg = models.CharField(max_length=225)
-    user_id = models.CharField(max_length=225)
+    user_nickname = models.CharField(max_length=254)
+    user_email = models.EmailField(max_length=254, validators=[EmailValidator])
+    user_pwd = models.CharField(max_length=254)
+    wechat_openid = models.CharField(max_length=254)
+    wechat_union = models.CharField(max_length=254)
+    user_headimg = models.CharField(max_length=254)
+    user_id = models.CharField(max_length=254)
 
 
 class Remind(models.Model):
     id = models.BigIntegerField
-    user_id = models.CharField(max_length=225)
-    task_id = models.CharField(max_length=225)
-    remind_time = models.DateTimeField
+    user_id = models.CharField(max_length=254)
+    task_id = models.CharField(max_length=254)
+    remind_time = models.DateTimeField(auto_now=True)
     remind_type = models.CharField(max_length=1)
-    isreminded = models.BooleanField
-    isdeal = models.BooleanField
-    remind_content = models.CharField(max_length=225)
+    isreminded = models.NullBooleanField()
+    isdeal = models.NullBooleanField()
+    remind_content = models.CharField(max_length=254)
 
 
 class Task(models.Model):
     id = models.BigIntegerField
-    task_id = models.CharField(max_length=225)
-    task_title = models.CharField(max_length=225)
-    task_parentid = models.CharField(max_length=225)
-    user_id = models.CharField(max_length=225)
-    remind_time = models.DateTimeField
-    task_isremind = models.BooleanField
-    task_iscomplete = models.BooleanField
-    task_completetime = models.DateTimeField
+    task_id = models.CharField(max_length=254)
+    task_title = models.CharField(max_length=254)
+    task_parentid = models.CharField(max_length=254)
+    user_id = models.CharField(max_length=254)
+    remind_time = models.DateTimeField(auto_now=True)
+    task_isremind = models.NullBooleanField()
+    task_iscomplete = models.NullBooleanField()
+    task_completetime = models.DateTimeField(auto_now=True)
