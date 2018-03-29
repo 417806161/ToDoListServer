@@ -1,0 +1,12 @@
+certifi==2018.1.18
+chardet==3.0.4
+-e git+https://github.com/django/django.git@2d73ffc6f96e399716a1ed3f58acd4e99afa3d33#egg=Django
+idna==2.6
+Naked==0.1.31
+pycrypto==2.6.1
+PyMySQL==0.8.0
+pytz==2018.3
+PyYAML==3.12
+requests==2.18.4
+shellescape==3.4.1
+urllib3==1.22
