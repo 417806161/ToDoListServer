@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from wxapp import views as wxapp
+
 urlpatterns = [
+    path('wxapp/login/', wxapp.login, name='wechatLogin'),
     path('admin/', admin.site.urls),
 ]
